@@ -375,11 +375,15 @@ const app = express();
 app.get("/", (req, res) => {
   res.send("✅ Bot is alive!");
 });
-app.listen(3000, () => {
-  logger.info("🌍 Servidor web activo en puerto 3000");
+
+// Adaptado
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  logger.info(`🌍 Servidor web activo en puerto ${PORT}`);
 });
 
 // Cargar datos al iniciar
 loadData().catch((error) => {
   logger.error("Error al cargar datos iniciales: " + error.message);
 });
+
